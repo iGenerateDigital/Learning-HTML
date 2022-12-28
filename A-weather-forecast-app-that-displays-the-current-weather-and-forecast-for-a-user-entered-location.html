@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var weatherApp = document.createElement('div');
+weatherApp.innerHTML = '<input type="text" id="location" placeholder="Enter a location">' +
+  '<button id="submit">Submit</button>' +
+  '<div id="current"></div>' +
+  '<div id="forecast"></div>';
+document.body.appendChild(weatherApp);
+
+var location = document.getElementById('location');
+var submit = document.getElementById('submit');
+var current = document.getElementById('current');
+var forecast = document.getElementById('forecast');
+
+submit.addEventListener('click', function() {
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + location.value;
+  var request = new XMLHttpRequest();
+  request.open('GET', url);
+  request.onload = function() {
+    if (request.status === 200) {
+      var data = JSON.parse(request.responseText);
+      current.innerHTML = '<h2>Current weather in ' + data.name + '</h2>' +
+        '<p>' + data.weather[0].description + '</p>' +
+        '<p>Temperature: ' + data.main.temp + '&deg;C</p>' +
+        '<p>Pressure: ' + data.main.pressure + 'hpa</p>' +
+        '<p>Humidity: ' + data.main.humidity + '%</p>';
+    }
+  };
+  request.send();
+});
+});
+        </script>

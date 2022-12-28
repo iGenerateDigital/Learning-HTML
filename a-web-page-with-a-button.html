@@ -1,0 +1,15 @@
+/* A web page with a button */
+var button = document.createElement('button');
+button.innerHTML = 'Click Me';
+button.style.backgroundColor = '#00f';
+button.style.color = '#fff';
+button.style.fontSize = '20px';
+button.style.padding = '10px';
+button.style.borderRadius = '5px';
+button.style.border = 'none';
+button.style.cursor = 'pointer';
+document.body.appendChild(button);
+/* add onclick element: open web development website: https://igeneratedigital.com.au in a new google chrome browser */
+button.onclick = function() {
+  window.open('https://igeneratedigital.com.au', '_blank');
+};

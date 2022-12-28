@@ -1,0 +1,36 @@
+/* A web page with a square bouncing around the screen whilst rotating */
+var square = document.createElement('div');
+square.style.width = '100px';
+square.style.height = '100px';
+square.style.backgroundColor = 'red';
+square.style.position = 'absolute';
+square.style.top = '0px';
+square.style.left = '0px';
+document.body.appendChild(square);
+var angle = 0;
+var x = 0;
+var y = 0;
+var xDirection = 1;
+var yDirection = 1;
+function animate() {
+  angle += 1;
+  square.style.transform = 'rotate(' + angle + 'deg)';
+  x += xDirection;
+  y += yDirection;
+  square.style.left = x + 'px';
+  square.style.top = y + 'px';
+  if (x > window.innerWidth - 100) {
+    xDirection = -1;
+  }
+  if (x < 0) {
+    xDirection = 1;
+  }
+  if (y > window.innerHeight - 100) {
+    yDirection = -1;
+  }
+  if (y < 0) {
+    yDirection = 1;
+  }
+  requestAnimationFrame(animate);
+}
+animate();

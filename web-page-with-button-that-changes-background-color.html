@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var button = document.createElement('button');
+button.innerHTML = 'Change Background';
+document.body.appendChild(button);
+
+var colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple', 'pink', 'black', 'white'];
+var i = 0;
+button.onclick = function() {
+  document.body.style.backgroundColor = colors[i];
+  i = (i + 1) % colors.length;
+}
+});
+        </script>
+    </head>
+</html>
